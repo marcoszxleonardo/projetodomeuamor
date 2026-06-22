@@ -7,9 +7,14 @@
   --creme: #fdf6f0;
 }
 
-*{ box-sizing:border-box; margin:0; padding:0; }
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-html, body{
+html,
+body{
   height:100%;
   overscroll-behavior:none;
 }
@@ -27,7 +32,8 @@ body{
   align-items:center;
   justify-content:center;
   padding:16px;
-  overflow:hidden;
+
+  overflow-x:hidden;
 }
 
 .screen{
@@ -35,7 +41,11 @@ body{
   width:100%;
   max-width:480px;
 }
-.screen.active{ display:flex; justify-content:center; }
+
+.screen.active{
+  display:flex;
+  justify-content:center;
+}
 
 .eyebrow{
   font-size:0.7rem;
@@ -45,7 +55,6 @@ body{
   margin-bottom:10px;
 }
 
-/* TELA 1 */
 .card{
   text-align:center;
   width:100%;
@@ -58,7 +67,11 @@ h1{
   line-height:1.15;
   margin-bottom:6px;
 }
-h1 em{ font-style:italic; color:var(--rosa); }
+
+h1 em{
+  font-style:italic;
+  color:var(--rosa);
+}
 
 .subtitle{
   font-size:0.9rem;
@@ -73,7 +86,10 @@ h1 em{ font-style:italic; color:var(--rosa); }
   gap:18px;
   justify-content:center;
   align-items:center;
-  min-height:120px;
+  min-height:320px;
+  width:100%;
+
+  touch-action:manipulation;
 }
 
 .btn{
@@ -85,26 +101,38 @@ h1 em{ font-style:italic; color:var(--rosa); }
   padding:14px 34px;
   border-radius:999px;
   cursor:pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:transform 0.15s ease, box-shadow 0.15s ease;
+
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
 }
+
 .btn-yes{
-  background: var(--dourado);
-  color: var(--vinho);
-  font-size: 1.1rem;
+  background:var(--dourado);
+  color:var(--vinho);
+  font-size:1.1rem;
   transition:
     transform 0.2s ease,
     left 0.2s ease,
     top 0.2s ease;
 }
-btn-yes:hover{ transform:translateY(-2px) scale(1.03); box-shadow:0 8px 20px rgba(212,168,87,0.35); }
+
+.btn-yes:hover{
+  transform:translateY(-2px) scale(1.03);
+  box-shadow:0 8px 20px rgba(212,168,87,0.35);
+}
 
 .btn-no{
-  background: transparent;
-  color: var(--rosa-claro);
-  border: 1.5px solid rgba(232,160,176,0.5);
+  background:transparent;
+  color:var(--rosa-claro);
+  border:1.5px solid rgba(232,160,176,0.5);
   position:relative;
   z-index:5;
-  transition: transform 0.18s ease, left 0.18s ease, top 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    left 0.18s ease,
+    top 0.18s ease;
 }
 
 .hint{
@@ -114,41 +142,50 @@ btn-yes:hover{ transform:translateY(-2px) scale(1.03); box-shadow:0 8px 20px rgb
   min-height:18px;
 }
 
-/* TELA 2: carta */
 .letter-card{
-  background: var(--creme);
-  color: var(--vinho);
+  background:var(--creme);
+  color:var(--vinho);
   border-radius:18px;
   padding:28px 24px;
   text-align:left;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+  box-shadow:0 24px 60px rgba(0,0,0,0.45);
   width:100%;
   max-height:88vh;
   max-height:88dvh;
   overflow-y:auto;
-  animation: fadeUp 0.6s ease both;
+  animation:fadeUp 0.6s ease both;
+
+  -webkit-overflow-scrolling:touch;
 }
 
 @keyframes fadeUp{
-  from{ opacity:0; transform:translateY(16px); }
-  to{ opacity:1; transform:translateY(0); }
+  from{
+    opacity:0;
+    transform:translateY(16px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-.letter-card .eyebrow{ color: var(--vinho-claro); }
+.letter-card .eyebrow{
+  color:var(--vinho-claro);
+}
 
 .photo-grid{
   display:grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns:1fr 1fr;
   gap:10px;
   margin-bottom:18px;
 }
 
 .photo-frame{
   width:100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio:3 / 4;
   border-radius:12px;
   overflow:hidden;
-  background: var(--rosa-claro);
+  background:var(--rosa-claro);
   position:relative;
 }
 
@@ -166,9 +203,13 @@ btn-yes:hover{ transform:translateY(-2px) scale(1.03); box-shadow:0 8px 20px rgb
   justify-content:center;
   height:100%;
   gap:8px;
-  color: var(--vinho-claro);
+  color:var(--vinho-claro);
 }
-.photo-fallback span{ font-size:2.2rem; }
+
+.photo-fallback span{
+  font-size:2.2rem;
+}
+
 .photo-fallback small{
   font-size:0.72rem;
   text-align:center;
@@ -198,7 +239,13 @@ btn-yes:hover{ transform:translateY(-2px) scale(1.03); box-shadow:0 8px 20px rgb
   color:var(--vinho-claro);
 }
 
-@media (max-width: 380px){
-  .btn{ padding:12px 26px; font-size:0.9rem; }
-  .letter-card{ padding:22px 18px; }
+@media (max-width:380px){
+  .btn{
+    padding:12px 26px;
+    font-size:0.9rem;
+  }
+
+  .letter-card{
+    padding:22px 18px;
+  }
 }
