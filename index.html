@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Para a Ana ❤</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TELA 0: tela inicial pra liberar a música -->
+<section id="screen-start" class="screen active">
+  <div class="card">
+    <div class="eyebrow">pra você, com música e tudo</div>
+    <h1>Toca aqui <em>pra começar</em></h1>
+    <p class="subtitle">tem uma música tocando junto, sobe o volume 🎵</p>
+    <button id="btnStart" class="btn btn-yes">Começar</button>
+  </div>
+</section>
+
+<!-- áudio de fundo: troque "musica.mp3" pelo nome do seu arquivo -->
+<audio id="bgMusic" src="musica.mp3" loop></audio>
+
+<!-- TELA 1: pergunta com botão "não" fujão -->
+<section id="screen-ask" class="screen">
+  <div class="card">
+    <div class="eyebrow">uma pergunta importante</div>
+    <h1>Quer namorar <em>comigo</em>?</h1>
+    <p class="subtitle">pensa bem antes de responder 😏</p>
+    <div class="btn-row" id="btnRow">
+      <button id="btnYes" class="btn btn-yes">Sim!</button>
+      <button id="btnNo" class="btn btn-no">Não</button>
+    </div>
+    <p class="hint" id="taunt"></p>
+  </div>
+</section>
+
+<!-- TELA 2: carta romântica com foto -->
+<section id="screen-letter" class="screen">
+  <div class="letter-card">
+    <div class="photo-grid">
+      <div class="photo-frame">
+        <!-- Troque o src abaixo pela primeira foto da Ana -->
+        <img id="anaPhoto1" src="nana1.jpeg" alt="Foto da Ana" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="photo-fallback">
+          <span>📷</span>
+          <small>coloque "foto-ana1.jpg"<br>na mesma pasta</small>
+        </div>
+      </div>
+      <div class="photo-frame">
+        <!-- Troque o src abaixo pela segunda foto da Ana -->
+        <img id="anaPhoto2" src="nana2.jpeg" alt="Foto da Ana" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="photo-fallback">
+          <span>📷</span>
+          <small>coloque "foto-ana2.jpg"<br>na mesma pasta</small>
+        </div>
+      </div>
+    </div>
+    <div class="eyebrow">eu sabia que você ia dizer sim</div>
+    <h2>Pra você, Ana.</h2>
+    <p>
+      Desde que você entrou na minha vida, tudo ficou mais leve, mais bonito e mais engraçado.
+      Você é o tipo de pessoa que faz um dia comum virar um dia bom só por estar perto.
+    </p>
+    <p>
+      Eu gosto de cada detalhe seu: do jeito que você fala, do jeito que você ri, do jeito que você cuida
+      de mim sem nem perceber que está cuidando. Queria poder te mostrar todo dia o quanto você importa.
+    </p>
+    <p>
+      Obrigado por estar aqui, por escolher ficar, e por fazer parte da minha história.
+      Eu te amo, do meu jeito, todos os dias.
+    </p>
+    <p class="signature">com todo o meu carinho. ❤</p>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

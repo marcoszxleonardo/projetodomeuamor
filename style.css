@@ -1,0 +1,204 @@
+:root{
+  --vinho: #3a0d1a;
+  --vinho-claro: #6b1f33;
+  --rosa: #e8a0b0;
+  --rosa-claro: #f6dbe0;
+  --dourado: #d4a857;
+  --creme: #fdf6f0;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+html, body{
+  height:100%;
+  overscroll-behavior:none;
+}
+
+body{
+  min-height:100vh;
+  min-height:100dvh;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(212,168,87,0.12), transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(232,160,176,0.15), transparent 45%),
+    linear-gradient(160deg, var(--vinho) 0%, #250a13 100%);
+  font-family:'Quicksand', sans-serif;
+  color:var(--creme);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+  overflow:hidden;
+}
+
+.screen{
+  display:none;
+  width:100%;
+  max-width:480px;
+}
+.screen.active{ display:flex; justify-content:center; }
+
+.eyebrow{
+  font-size:0.7rem;
+  letter-spacing:0.3em;
+  text-transform:uppercase;
+  color:var(--dourado);
+  margin-bottom:10px;
+}
+
+/* TELA 1 */
+.card{
+  text-align:center;
+  width:100%;
+}
+
+h1{
+  font-family:'Playfair Display', serif;
+  font-weight:700;
+  font-size:clamp(1.8rem, 8vw, 2.6rem);
+  line-height:1.15;
+  margin-bottom:6px;
+}
+h1 em{ font-style:italic; color:var(--rosa); }
+
+.subtitle{
+  font-size:0.9rem;
+  color:var(--rosa-claro);
+  opacity:0.85;
+  margin-bottom:34px;
+}
+
+.btn-row{
+  position:relative;
+  display:flex;
+  gap:18px;
+  justify-content:center;
+  align-items:center;
+  min-height:120px;
+}
+
+.btn{
+  font-family:'Quicksand', sans-serif;
+  font-weight:700;
+  font-size:1rem;
+  letter-spacing:0.02em;
+  border:none;
+  padding:14px 34px;
+  border-radius:999px;
+  cursor:pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-yes{
+  background: var(--dourado);
+  color: var(--vinho);
+  font-size: 1.1rem;
+  transition:
+    transform 0.2s ease,
+    left 0.2s ease,
+    top 0.2s ease;
+}
+btn-yes:hover{ transform:translateY(-2px) scale(1.03); box-shadow:0 8px 20px rgba(212,168,87,0.35); }
+
+.btn-no{
+  background: transparent;
+  color: var(--rosa-claro);
+  border: 1.5px solid rgba(232,160,176,0.5);
+  position:relative;
+  z-index:5;
+  transition: transform 0.18s ease, left 0.18s ease, top 0.18s ease;
+}
+
+.hint{
+  margin-top:26px;
+  font-size:0.78rem;
+  color:rgba(253,246,240,0.5);
+  min-height:18px;
+}
+
+/* TELA 2: carta */
+.letter-card{
+  background: var(--creme);
+  color: var(--vinho);
+  border-radius:18px;
+  padding:28px 24px;
+  text-align:left;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+  width:100%;
+  max-height:88vh;
+  max-height:88dvh;
+  overflow-y:auto;
+  animation: fadeUp 0.6s ease both;
+}
+
+@keyframes fadeUp{
+  from{ opacity:0; transform:translateY(16px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+.letter-card .eyebrow{ color: var(--vinho-claro); }
+
+.photo-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+  margin-bottom:18px;
+}
+
+.photo-frame{
+  width:100%;
+  aspect-ratio: 3 / 4;
+  border-radius:12px;
+  overflow:hidden;
+  background: var(--rosa-claro);
+  position:relative;
+}
+
+.photo-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.photo-fallback{
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  height:100%;
+  gap:8px;
+  color: var(--vinho-claro);
+}
+.photo-fallback span{ font-size:2.2rem; }
+.photo-fallback small{
+  font-size:0.72rem;
+  text-align:center;
+  line-height:1.4;
+  opacity:0.75;
+}
+
+.letter-card h2{
+  font-family:'Playfair Display', serif;
+  font-style:italic;
+  color:var(--vinho-claro);
+  margin-bottom:14px;
+  font-size:1.5rem;
+}
+
+.letter-card p{
+  font-size:0.95rem;
+  line-height:1.7;
+  margin-bottom:12px;
+}
+
+.letter-card .signature{
+  font-family:'Playfair Display', serif;
+  font-style:italic;
+  text-align:right;
+  margin-top:16px;
+  color:var(--vinho-claro);
+}
+
+@media (max-width: 380px){
+  .btn{ padding:12px 26px; font-size:0.9rem; }
+  .letter-card{ padding:22px 18px; }
+}
