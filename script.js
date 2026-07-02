@@ -1,33 +1,43 @@
 (function () {
+
   const screenStart = document.getElementById("screen-start");
   const screenAsk = document.getElementById("screen-ask");
   const screenLetter = document.getElementById("screen-letter");
+  const screenMoments = document.getElementById("screen-moments");
 
   const btnStart = document.getElementById("btnStart");
   const btnYes = document.getElementById("btnYes");
   const btnNo = document.getElementById("btnNo");
-  const btnRow = document.getElementById("btnRow");
+  const btnMoments = document.getElementById("btnMoments");
 
+  const btnRow = document.getElementById("btnRow");
   const taunt = document.getElementById("taunt");
   const bgMusic = document.getElementById("bgMusic");
 
   let yesClicks = 0;
   let noDodges = 0;
 
+  // ==========================
+  // INICIAR
+  // ==========================
+
   btnStart.addEventListener("click", function () {
+
     screenStart.classList.remove("active");
     screenAsk.classList.add("active");
 
     bgMusic.volume = 0.7;
 
-    try {
-      bgMusic.play();
-    } catch (e) {
-      console.log(e);
-    }
+    bgMusic.play().catch(() => {});
+
   });
 
+  // ==========================
+  // BOTÃO NÃO
+  // ==========================
+
   function moveButton(button) {
+
     const rowRect = btnRow.getBoundingClientRect();
 
     const maxX = rowRect.width - button.offsetWidth;
@@ -39,6 +49,7 @@
     button.style.position = "absolute";
     button.style.left = x + "px";
     button.style.top = y + "px";
+
   }
 
   const noMessages = [
@@ -49,6 +60,7 @@
   ];
 
   function moveNoButton(e) {
+
     if (e) e.preventDefault();
 
     moveButton(btnNo);
@@ -57,22 +69,27 @@
       noMessages[Math.min(noDodges, noMessages.length - 1)];
 
     noDodges++;
+
   }
 
   btnNo.addEventListener("mouseenter", moveNoButton);
 
-  btnNo.addEventListener(
-    "touchstart",
-    function (e) {
-      moveNoButton(e);
-    },
-    { passive: false }
-  );
+  btnNo.addEventListener("touchstart", function (e) {
+
+    moveNoButton(e);
+
+  }, { passive: false });
 
   btnNo.addEventListener("click", moveNoButton);
 
+  // ==========================
+  // BOTÃO SIM
+  // ==========================
+
   btnYes.addEventListener("click", function (e) {
+
     if (yesClicks < 3) {
+
       e.preventDefault();
 
       const msgs = [
@@ -85,9 +102,28 @@
       yesClicks++;
 
       return;
+
     }
 
     screenAsk.classList.remove("active");
     screenLetter.classList.add("active");
+
   });
+
+  // ==========================
+  // IR PARA MOMENTOS
+  // ==========================
+
+  btnMoments.addEventListener("click", function () {
+
+    screenLetter.classList.remove("active");
+    screenMoments.classList.add("active");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  });
+
 })();
